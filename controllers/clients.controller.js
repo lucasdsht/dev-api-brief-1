@@ -11,7 +11,8 @@ class ClientsController {
   }
 
   createClients(req, res) {
-    res.json("client created")
+    const client = ClientsServices.createClient(req.body)
+    res.json(client)
   }
 
   modifyClient(req, res) {

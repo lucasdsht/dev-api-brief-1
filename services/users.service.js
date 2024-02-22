@@ -1,4 +1,5 @@
 const clients = require("../data/clients.json")
+const crypto = require("crypto")
 
 class ClientsService {
   getAllClients() {
@@ -9,6 +10,16 @@ class ClientsService {
     const temp = clients.clients.find(x => x.id == id)
     console.log(temp)
     return temp
+  }
+
+  createClient(client) {
+    const newClient = {
+      id: crypto.randomUUID(),
+      name: client.name,
+      email: client.email,
+      phone: client.phone
+    }
+    return (`Le client ${newClient?.name} a ete cree`)
   }
 
   modifyClient(id) {
